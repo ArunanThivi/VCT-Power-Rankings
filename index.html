@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,200" />
+    <link rel="icon" type="image/x-icon" href="logos/vct.png">
+    <title>VCT Power Rankings</title>
+</head>
+<body>
+    
+    <div id="header">
+        <img src="logos/vct.png" class="team-logo">
+        VCT Americas Power Rankings
+    </div>
+    <div id="captureRegion">
+        <input type="text" id="rankingsTitle" value="VCT Americas Power Rankings">
+        <ul id="rankings" class="options">
+            <li class="team draggable" id="thieves">
+                <img src="logos/thieves.png" class="team-logo">
+                100 Thieves
+            </li>
+            <li class="team draggable" id="evilgeniuses">
+                <img src="logos/eg.png" class="team-logo">
+                Evil Geniuses
+            </li>
+            <li class="team draggable" id="cloud9">
+                <img src="logos/cloud9.png" class="team-logo">
+                Cloud9
+            </li>
+            <li class="team draggable" id="nrg">
+                <img src="logos/nrg.png" class="team-logo">
+                NRG Esports
+            </li>
+            <li class="team draggable" id="furia">
+                <img src="logos/furia.png" class="team-logo">
+                FURIA
+            </li>
+            <li class="team draggable" id="loud">
+                <img src="logos/loud.png" class="team-logo">
+                LOUD
+            </li>
+            <li class="team draggable" id="mibr">
+                <img src="logos/mibr.png" class="team-logo">
+                MIBR
+            </li>
+            <li class="team draggable" id="kru">
+                <img src="logos/kru.png" class="team-logo">
+                KRU Esports
+            </li>
+            <li class="team draggable" id="sentinels">
+                <img src="logos/sen.png" class="team-logo">
+                Sentinels
+            </li>
+            <li class="team draggable" id="leviatan">
+                <img src="logos/leviatan.png" class="team-logo">
+                Leviatán
+            </li>
+        </ul>
+    </div>
+    <ul id="uncapturedRegion" class="options">
+        Unsorted Teams
+        <li class="tierBreak draggable">
+            - Tier Break -
+        </li>
+        <li class="tierBreak draggable">
+            - Tier Break -
+        </li>
+        <li class="tierBreak draggable">
+            - Tier Break -
+        </li>
+        <li class="tierBreak draggable">
+            - Tier Break -
+        </li>
+        <li class="tierBreak draggable">
+            - Tier Break -
+        </li>
+        <li class="tierBreak draggable">
+            - Tier Break -
+        </li>
+        <li class="tierBreak draggable">
+            - Tier Break -
+        </li>
+        <li class="tierBreak draggable">
+            - Tier Break -
+        </li>
+        <li class="tierBreak draggable">
+            - Tier Break -
+        </li>
+    </ul>
+    <div id="capture"><span class="material-symbols-outlined" style="margin-right: 10px">photo_camera</span> Save as Image </div>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content" id="modalInner">
+          <span class="close">&times;</span>
+          <p>Image Created<br>(To save, right click image and select "Save Image as...")</p>
+        </div>
+      
+      </div>
+    <script>
+        $( function() {
+            $( "#rankings, #uncapturedRegion" ).sortable({
+                connectWith: ".options"
+            }).disableSelection();
+        } );
+
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("capture");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+            //set all elements with class name team to have a bottom margin of 0px
+            var teams = document.getElementsByClassName("team");
+            var tierBreaks = document.getElementsByClassName("tierBreak");
+            var title = document.getElementById("rankingsTitle");
+            title.style.borderColor = "white";
+            for (var i = 0; i < teams.length; i++) {
+                teams[i].style.marginBottom = "0px";
+            }
+            for (var i = 0; i < tierBreaks.length; i++) {
+                tierBreaks[i].style.backgroundColor = "white";
+            }
+            html2canvas(document.getElementById("captureRegion")).then(canvas => {
+                canvas.id="canvasPreview";
+                document.getElementById("modalInner").appendChild(canvas)
+            });
+            title.style.borderColor = "rgb(190, 190, 190)";
+            for (var i = 0; i < teams.length; i++) {
+                teams[i].style.marginBottom = "10px";
+            }
+            for (var i = 0; i < tierBreaks.length; i++) {
+                tierBreaks[i].style.backgroundColor = "black";
+            }
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            document.getElementById("canvasPreview") && document.getElementById("canvasPreview").remove();
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                document.getElementById("canvasPreview") && document.getElementById("canvasPreview").remove();
+                modal.style.display = "none";
+            }
+        }
+
+    </script>
+</body>
+</html>
