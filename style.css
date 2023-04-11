@@ -9,7 +9,7 @@
     font-size: x-large;
 }
 
-.draggable {
+li {
     cursor: grab;
 }
 .team {
@@ -20,13 +20,16 @@
     display:flex;
     align-items:center;
     font-family: 'Roboto', sans-serif;
+    color: white;
     
     /* height: 30px; */
 }
 
 .team-logo {
+    background-color: white;
     width: 35px;
     padding: 5px;
+    margin-right: 10px;
 }
 
 .tierBreak {
@@ -39,7 +42,17 @@
     border-radius: 2px;
 
 }
+.emea {
+    display: none;
+}
 
+.pacific {
+    display: none;
+}
+
+.challengersNA {
+    display: none;
+}
 #captureRegion {
     width: fit-content;
     margin: auto;
@@ -69,54 +82,25 @@
     padding-left:   0px;
 }
 
+/* Americas Teams */
 #evilgeniuses {
-    background-color: white;
-    color: #0C1220;
-}
-
-#evilgeniuses img{
     background-color: #0C1220;
-    margin-right: 10px;
 }
 
 #cloud9 {
     background-color: #00AEEF;
-    color: white;
-}
-
-#cloud9 img{
-    background-color: white;
-    margin-right: 10px;
 }
 
 #thieves {
-    color: white;
     background-color: black;
-}
-
-#thieves img{
-    margin-right: 10px;
-    background-color: white;
 }
 
 #nrg {
     background-color: black;
-    color: white;
-}
-
-#nrg img{
-    background-color: white;
-    margin-right: 10px;
 }
 
 #furia {
-    background-color: white;
-    color: black;
-}
-
-#furia img{
     background-color: black;
-    margin-right: 10px;
 }
 
 #loud {
@@ -124,19 +108,9 @@
     color: black;
 }
 
-#loud img{
-    margin-right: 10px;
-    background-color: black;
-}
 
 #mibr {
     background-color: black;
-    color: white;
-}
-
-#mibr img{
-    background-color: white;
-    margin-right: 10px;
 }
 
 #kru {
@@ -144,30 +118,97 @@
     background-color: #ff198f;
 }
 
-#kru img{
-    background-color: black;
-    margin-right: 10px;
-}
 
 #sentinels {
-    background-color: #141928;
-    color: white;
-}
-
-#sentinels img{
     background-color: #ec1c48;
-    margin-right: 10px;
 }
 
 #leviatan {
     background-color: #69abdc;
-    color: white;
 }
 
 #leviatan img{
     background-color: white;
-    margin-right: 10px;
 }
+
+/* EMEA Teams */
+#fnatic {
+    background-color: #ff5900;
+}
+
+#fut {
+    background-color: #121824;
+}
+
+#liquid {
+    background-color: #0A1723;
+}
+
+#navi {
+    background-color: #FFF200;
+    color: black;
+}
+
+#vitality {
+    background-color: #FFC72C;
+    color: #221C35;
+}
+
+#heretics, #giants {
+    background-color: black;
+}
+
+#koi {
+    background-color: #6a30c0;
+}
+
+#kc {
+    background-color: #01c8fe;
+    color: black;
+}
+
+#bbl {
+    background-color: #2e1742;
+    color: #ffd400;
+}
+
+/* Pacific Teams */
+#global {
+    /* background-color: #ff5900; */
+    background-color: #174692;
+}
+
+#t1 {
+    background-color: #e2012d;
+}
+
+#geng {
+    background-color: #aa8c30;
+}
+
+#drx {
+    background-color: #0f03a3;
+}
+
+#talon {
+    background-color: #e30041;
+}
+
+#rrq {
+    background-color: #f3aa36;
+    color: black;
+}
+
+#paperrex, #zeta, #ts{
+    background-color: black;
+}
+
+
+#dfm {
+    background-color: #2567ec;
+    /* color: black; */
+}
+
 
 #capture {
     position: absolute;
