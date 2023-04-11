@@ -42,11 +42,7 @@ li {
     border-radius: 2px;
 
 }
-.emea {
-    display: none;
-}
-
-.pacific {
+.disabled {
     display: none;
 }
 

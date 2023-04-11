@@ -12,14 +12,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,200" />
-    <link rel="icon" type="image/x-icon" href="logos/vct.png">
+    <link rel="icon" type="image/x-icon" href="logos/vct.svg">
     <title>VCT Power Rankings</title>
 </head>
 <body>
-    
+    <div id="regions">
+        <button class="region" id="all" onClick="selectRegion(this.id)">All VCT</button>
+        <button class="region" id="americas" onClick="selectRegion(this.id)">Americas</button>
+        <button class="region" id="emea" onClick="selectRegion(this.id)">EMEA</button>
+        <button class="region" id="pacific" onClick="selectRegion(this.id)">Pacific</button>
+        <button class="region" id="challengers"  onClick="selectRegion(this.id)" disabled>NA Challengers</button>
+    </div>
     <div id="header">
-        <img src="logos/vct.png" class="team-logo">
-        VCT Americas Power Rankings
+        <img src="logos/vct.svg" id='vct-logo' class="team-logo">
+        <span id="page-title">VCT Power Rankings</span>
     </div>
     <div id="captureRegion">
         <input type="text" id="rankingsTitle" value="VCT Americas Power Rankings">
@@ -66,43 +72,43 @@
                 Leviatán
             </li>
             <!-- EMEA Teams -->
-            <li class="team emea" id="fnatic">
+            <li class="team emea disabled" id="fnatic">
                 <img src="logos/FNATIC.png" class="team-logo">
                 FNATIC
             </li>
-            <li class="team emea" id="fut">
+            <li class="team emea disabled" id="fut">
                 <img src="logos/FUT.png" class="team-logo">
                 FUT Esports
             </li>
-            <li class="team emea" id="liquid">
+            <li class="team emea disabled" id="liquid">
                 <img src="logos/liquid.png" class="team-logo">
                 Team Liquid
             </li>
-            <li class="team emea" id="navi">
+            <li class="team emea disabled" id="navi">
                 <img src="logos/navi.png" class="team-logo">
                 Natus Vincere
             </li>
-            <li class="team emea" id="vitality">
+            <li class="team emea disabled" id="vitality">
                 <img src="logos/vitality.png" class="team-logo">
                 Team Vitality
             </li>
-            <li class="team emea" id="giants">
+            <li class="team emea disabled" id="giants">
                 <img src="logos/giants.png" class="team-logo">
                 Giants Gaming
             </li>
-            <li class="team emea" id="heretics">
+            <li class="team emea disabled" id="heretics">
                 <img src="logos/heretics.png" class="team-logo">
                 Team Heretics
             </li>
-            <li class="team emea" id="koi">
+            <li class="team emea disabled" id="koi">
                 <img src="logos/koi.png" class="team-logo">
                 KOI
             </li>
-            <li class="team emea" id="kc">
+            <li class="team emea disabled" id="kc">
                 <img src="logos/kc.png" class="team-logo">
                 Karmine Corp
             </li>
-            <li class="team emea" id="bbl">
+            <li class="team emea disabled" id="bbl">
                 <img src="logos/bbl.png" class="team-logo">
                 BBL Esports
             </li>
@@ -292,6 +298,47 @@
             }
         }
 
+        function selectRegion(region) {
+            header = document.getElementById('page-title');
+            title = document.getElementById('rankingsTitle');
+            logo = document.getElementById('vct-logo');
+            if (region == 'all') {
+                title.value = "VCT Power Rankings";
+                header.innerText = "VCT Power Rankings";
+                logo.src = "logos/vct.svg";
+                elements = document.getElementsByClassName('team')
+                for (var index = 0; index < elements.length; index++) {
+                    element = elements[index]
+                    if (element.classList[1] == 'challengersNA') {
+                        element.classList.remove('disabled');
+                    } else {
+                        element.classList.remove('disabled');
+                    }
+                    
+                }
+                return
+            }
+            regions = ['americas', 'emea', 'challengersNA', 'pacific']
+            cased = {
+                'americas': 'Americas',
+                'emea': 'EMEA',
+                'challengersNA': 'Challengers NA',
+                'pacific': 'Pacific'
+            }
+            elements = document.getElementsByClassName('team')
+            for (var index = 0; index < elements.length; index++) {
+                element = elements[index]
+                if (region == element.classList[1]) {
+                    element.classList.remove('disabled');
+                } else {
+                    element.classList.add('disabled');
+                }
+                
+            }
+            logo.src="logos/" + region + ".png";
+            title.value = "VCT " + cased[region] + " Power Rankings";
+            header.innerText = "VCT " + cased[region] + " Power Rankings";
+        }
     </script>
 </body>
 </html>
