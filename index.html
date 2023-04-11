@@ -17,11 +17,11 @@
 </head>
 <body>
     <div id="regions">
-        <button class="region" id="all" onClick="selectRegion(this.id)">All VCT</button>
-        <button class="region" id="americas" onClick="selectRegion(this.id)">Americas</button>
-        <button class="region" id="emea" onClick="selectRegion(this.id)">EMEA</button>
-        <button class="region" id="pacific" onClick="selectRegion(this.id)">Pacific</button>
-        <button class="region" id="challengersNA"  onClick="selectRegion(this.id)">NA Challengers</button>
+        <button class="region inactiveRegion" id="all" onClick="selectRegion(this.id)">All VCT</button>
+        <button class="region activeRegion" id="americas" onClick="selectRegion(this.id)">Americas</button>
+        <button class="region inactiveRegion" id="emea" onClick="selectRegion(this.id)">EMEA</button>
+        <button class="region inactiveRegion" id="pacific" onClick="selectRegion(this.id)">Pacific</button>
+        <button class="region inactiveRegion" id="challengersNA"  onClick="selectRegion(this.id)">NA Challengers</button>
     </div>
     <div id="header">
         <img src="logos/americas.png" id='vct-logo' class="team-logo">
@@ -300,6 +300,12 @@
 
         function selectRegion(region) {
             header = document.getElementById('page-title');
+            button = document.getElementById(region)
+            oldRegion = document.getElementsByClassName('activeRegion')[0]
+            oldRegion.classList.remove('activeRegion')
+            oldRegion.classList.add('inactiveRegion')
+            button.classList.remove('inactiveRegion')
+            button.classList.add('activeRegion')
             title = document.getElementById('rankingsTitle');
             logo = document.getElementById('vct-logo');
             if (region == 'all') {
