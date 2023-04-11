@@ -46,9 +46,6 @@ li {
     display: none;
 }
 
-.challengersNA {
-    display: none;
-}
 #captureRegion {
     width: fit-content;
     margin: auto;
@@ -202,9 +199,58 @@ li {
 
 #dfm {
     background-color: #2567ec;
-    /* color: black; */
 }
 
+/* NA Challengers Teams */
+
+#tsm, #g2 {
+    background-color: black;
+}
+
+#m80 {
+    background-color: #daff00;
+    color: black;
+}
+
+#mxm {
+    background-color: #00a7ec;
+}
+
+
+#faze {
+ background-color: #ed2224;
+}
+
+#tt {
+    background-color: #4c6d52;
+}
+
+#mad {
+    background-color: #ddbd5c;
+    color: black;
+}
+
+#or {
+    background-color: #f16823;
+}
+
+#guard {
+    background-color: #60269e;
+}
+
+#oxg {
+    background-color: #01ac42;
+}
+
+#shopify {
+    background-color: #1e1e1e;
+}
+
+
+#dsg {
+    background-color: #f5c65e;
+    color: black
+}
 
 #capture {
     position: absolute;

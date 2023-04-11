@@ -21,11 +21,11 @@
         <button class="region" id="americas" onClick="selectRegion(this.id)">Americas</button>
         <button class="region" id="emea" onClick="selectRegion(this.id)">EMEA</button>
         <button class="region" id="pacific" onClick="selectRegion(this.id)">Pacific</button>
-        <button class="region" id="challengers"  onClick="selectRegion(this.id)" disabled>NA Challengers</button>
+        <button class="region" id="challengersNA"  onClick="selectRegion(this.id)">NA Challengers</button>
     </div>
     <div id="header">
-        <img src="logos/vct.svg" id='vct-logo' class="team-logo">
-        <span id="page-title">VCT Power Rankings</span>
+        <img src="logos/americas.png" id='vct-logo' class="team-logo">
+        <span id="page-title">VCT Americas Power Rankings</span>
     </div>
     <div id="captureRegion">
         <input type="text" id="rankingsTitle" value="VCT Americas Power Rankings">
@@ -113,92 +113,92 @@
                 BBL Esports
             </li>
             <!-- Pacific Teams -->
-            <li class="team pacific" id="global">
+            <li class="team pacific disabled" id="global">
                 <img src="logos/global.png" class="team-logo">
                 Global Esports
             </li>
-            <li class="team pacific" id="t1">
+            <li class="team pacific disabled" id="t1">
                 <img src="logos/t1.png" class="team-logo">
                 T1
             </li>
-            <li class="team pacific" id="geng">
+            <li class="team pacific disabled" id="geng">
                 <img src="logos/geng.png" class="team-logo">
                 Gen G.
             </li>
-            <li class="team pacific" id="drx">
+            <li class="team pacific disabled" id="drx">
                 <img src="logos/drx.png" class="team-logo">
                 DRX
             </li>
-            <li class="team pacific" id="talon">
+            <li class="team pacific disabled" id="talon">
                 <img src="logos/talon.png" class="team-logo">
                 Talon Esports
             </li>
-            <li class="team pacific" id="rrq">
+            <li class="team pacific disabled" id="rrq">
                 <img src="logos/rrq.png" class="team-logo">
                 Rex Regum Qeon
             </li>
-            <li class="team pacific" id="paperrex">
+            <li class="team pacific disabled" id="paperrex">
                 <img src="logos/rex.png" class="team-logo">
                 Paper Rex
             </li>
-            <li class="team pacific" id="ts">
+            <li class="team pacific disabled" id="ts">
                 <img src="logos/ts.png" class="team-logo">
                 Team Secret
             </li>
-            <li class="team pacific" id="dfm">
+            <li class="team pacific disabled" id="dfm">
                 <img src="logos/dfm.png" class="team-logo">
                 DetonatioN FocusMe
             </li>
-            <li class="team pacific" id="zeta">
+            <li class="team pacific disabled" id="zeta">
                 <img src="logos/zeta.png" class="team-logo">
                 Zeta Division
             </li>
             <!-- NA Challengers Teams -->
-            <li class="team challengersNA" id="m80">
+            <li class="team challengersNA disabled" id="m80">
                 <img src="logos/m80.png" class="team-logo">
                 M80
             </li>
-            <li class="team challengersNA" id="mxm">
+            <li class="team challengersNA disabled" id="mxm">
                 <img src="logos/mxm.png" class="team-logo">
                 Moist Moguls
             </li>
-            <li class="team challengersNA" id="dsg">
+            <li class="team challengersNA disabled" id="dsg">
                 <img src="logos/dsg.png" class="team-logo">
                 Disguised
             </li>
-            <li class="team challengersNA" id="g2">
+            <li class="team challengersNA disabled" id="g2">
                 <img src="logos/g2.png" class="team-logo">
                 G2 Esports
             </li>
-            <li class="team challengersNA" id="faze">
+            <li class="team challengersNA disabled" id="faze">
                 <img src="logos/faze.png" class="team-logo">
                 FaZe Clan
             </li>
-            <li class="team challengersNA" id="tt">
+            <li class="team challengersNA disabled" id="tt">
                 <img src="logos/tt.png" class="team-logo">
                 Turtle Troops
             </li>
-            <li class="team challengersNA" id="mad">
+            <li class="team challengersNA disabled" id="mad">
                 <img src="logos/mad.png" class="team-logo">
                 MAD Lions
             </li>
-            <li class="team challengersNA" id="or">
+            <li class="team challengersNA disabled" id="or">
                 <img src="logos/or.png" class="team-logo">
                 OREsports
             </li>
-            <li class="team challengersNA" id="guard">
+            <li class="team challengersNA disabled" id="guard">
                 <img src="logos/guard.png" class="team-logo">
                 The Guard
             </li>
-            <li class="team challengersNA" id="oxg">
+            <li class="team challengersNA disabled" id="oxg">
                 <img src="logos/oxg.png" class="team-logo">
                 Oxygen Esports
             </li>
-            <li class="team challengersNA" id="shopify">
+            <li class="team challengersNA disabled" id="shopify">
                 <img src="logos/shopify.png" class="team-logo">
                 Shopify Rebellion
             </li>
-            <li class="team challengersNA" id="tsm">
+            <li class="team challengersNA disabled" id="tsm">
                 <img src="logos/tsm.png" class="team-logo">
                 TSM
             </li>
@@ -322,7 +322,7 @@
             cased = {
                 'americas': 'Americas',
                 'emea': 'EMEA',
-                'challengersNA': 'Challengers NA',
+                'challengersNA': 'NA Challengers',
                 'pacific': 'Pacific'
             }
             elements = document.getElementsByClassName('team')
@@ -336,9 +336,15 @@
                 
             }
             logo.src="logos/" + region + ".png";
-            title.value = "VCT " + cased[region] + " Power Rankings";
-            header.innerText = "VCT " + cased[region] + " Power Rankings";
+            if (region == 'challengersNA') {
+                title.value = cased[region] + " Power Rankings";
+                header.innerText = cased[region] + " Power Rankings";
+            } else {
+                title.value = "VCT " + cased[region] + " Power Rankings";
+                header.innerText = "VCT " + cased[region] + " Power Rankings";
+            }   
         }
+            
     </script>
 </body>
 </html>
