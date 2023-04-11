@@ -48,6 +48,7 @@ li {
 
 #regions {
     position: absolute;
+    top: 0px;
 }
 
 .region {
